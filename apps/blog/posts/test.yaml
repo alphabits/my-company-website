@@ -1,0 +1,9 @@
+title: "First major written assignment at dtu"
+author: "Anders Hørsted"
+date: 2011-02-02
+body: |
+    I have finally decided on a subject for my first major written assignment at dtu. The title of my assignment is “Detection of human alertness using supervised learning”. I have to develop a program that given some 30 measurements of physiological and environmental factors can decide whether a driver is about to be inattentive. I am very excited and eager to get going.
+
+tags:
+    - Communication
+    - IT

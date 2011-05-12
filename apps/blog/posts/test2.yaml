@@ -1,0 +1,22 @@
+title: "The set of all polynomials with integer coefficients is countable"
+author: "Anders Hørsted"
+date: 2011-01-07
+body: |
+    I have been up late, finishing my first written assignment for the course Mathematics 3 at DTU. By coincidence I found a very neat proof of the countability of the set of all polynomials with integer coefficients. The idea is to map every polynomial to a unique integer. The easy way to do that is to define a positional base-13 numeral system where the digits for 10, 11 and 12 is represented by the symbols \\(x\\), \\(+\\) and \\(-\\). That way, every polynomial, represents a unique integer in the base-13 system. Eg. the polynomial
+    $$
+        x^2 + x + 1
+    $$
+    is the base-13 number 
+    $$
+        xx+x+1
+    $$
+    which (in base-10) equals
+    $$
+        10\\cdot 13^5 + 10\\cdot 13^4 + 11\\cdot 13^3 + 10\\cdot 13^2 + 12\\cdot 13 +1 = 4024554
+    $$
+    Every other polynomial maps to a unique integer in the same way. One small problem remains. The preimage of the mapping isn’t the whole set of integers, so what we know right now, is that the cardinality, of the set of polynomials, is less than or equal to the cardinality of the set of integers. No problem. The set of all zero-degree polynomials is a subset of all polynomials, and all zero-degree polynomials maps to a single integer and all integers is mapped by a single zero-degree polynomial. This implies that the cardinality of the set of all polynomials is greater than or equal to the cardinality of the set of integers.
+    The only possibility that remains is that the cardinality of the polynomials and the integers is exactly equal. Technically we need to show that the integers is countable, by mapping them 1-1 to the natural numbers, but that is trivial.
+
+tags:
+    - Communication
+    - IT

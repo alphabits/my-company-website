@@ -1,0 +1,93 @@
+body {
+    font: normal normal normal 15px/1.5 'Neuton', georgia, times, serif;
+}
+
+header {
+    width: 100%;
+    background-color: #f6f6f6;
+    border-bottom: 1px solid #ddd;
+    overflow: hidden;
+    padding: 20px 0 10px 0;
+    margin-bottom: 40px;
+    font-size: 14px;
+    font-style: italic;
+}
+
+.wrapper {
+    width: 908px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+
+h1 {
+    width: 120px;
+    height: 67px;
+    background: transparent url(../img/logo.png) top right no-repeat;
+    text-indent: -9999px; overflow: hidden;
+    float: left;
+}
+
+h1 a {
+    display: block;
+    height: 67px;
+    margin-left: 31px;
+}
+
+nav {
+    float: left;
+    width: 628px;
+    margin-left: 20px;
+}
+
+nav .active {
+    color: #555;
+}
+
+aside {
+    width: 120px;
+    margin-right: 20px;
+    float: left;
+    min-height: 100px;
+}
+
+.content {
+    width: 628px;
+    float: left;
+}
+
+h2 {
+    font: normal normal 2.8em/1.4 'Bigshot One', georgia, times, serif;
+    margin-bottom: 28px;
+    padding-bottom: 8px;
+    border-bottom: 1px dotted #aaa;
+}
+
+h3 {
+    font-style: normal;
+    font-size: 1.8em;
+    line-height: 1.1;
+    font-weight: normal;
+    margin-bottom: 8px;
+}
+
+h4 {
+    font-style: italic;
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: #607890;
+}
+
+article {
+    margin-bottom: 28px;
+}
+
+.codehilite {
+    background-color: #f1f1f1;
+    line-height: 1.3;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    padding-left: 3px;
+    margin: 14px 0;
+    font-size: 14px;
+}

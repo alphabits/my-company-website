@@ -1,0 +1,50 @@
+{% import 'helpers.html' as h with context -%}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Alphabits{% block title %}{% endblock %}</title>
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({
+                extensions: ["tex2jax.js"],
+                jax: ["input/TeX", "output/HTML-CSS"],
+                tex2jax: {
+                    inlineMath: [ ["\\(", "\\)"] ],
+                    displayMath: [ ['$$', '$$'] ]
+                }
+            });
+        </script>
+        <script src="{{ url_for('.static', filename='mathjax/MathJax.js') }}"></script>
+        <!--[if lt IE 9]>
+        <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Neuton:regular,italic" type="text/css" />
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Bigshot+One" type="text/css" />
+        <link rel="stylesheet" href="{{url_for('.static', filename='css/reset.css')}}" type="text/css" />
+        <link rel="stylesheet" href="{{ url_for('.static', filename='css/master.css') }}" type="text/css" />
+        <link rel="stylesheet" href="{{ url_for('.static', filename='css/pygments.css') }}" type="text/css" />
+    </head>
+    <body>
+        <header>
+            <div class="wrapper">
+                <h1><a href="{{url_for('frontend.index')}}">Alphabits</a></h1>
+                <nav>
+                    {{ h.get_link('frontend.show_page', 'Alphabits', page="about")}} is my company, where I create websites, webapplications and do data analysis.<br/>
+                    I prefer to create simple solutions using open source tools. I dislike bland buzzwords and<br/> 
+                    admire great craftmanship. You can read more about my personal thoughts at {{ h.get_link('blog.index', 'my blog')}}.
+                </nav>
+            </div>
+        </header>
+        <div class="wrapper">
+            <aside>
+                {% block aside %}{% endblock %}
+            </aside>
+            <div class="content">
+                {% block content %}{% endblock %}
+            </div>
+            <footer>
+                
+            </footer>
+        </div>
+    </body>
+</html>

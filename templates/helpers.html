@@ -1,0 +1,9 @@
+{% macro get_link(endpoint, text) -%}
+    {% set u = url_for(endpoint, **kwargs) %}
+    {% if request.path == u -%}
+    {% set c = 'active' -%}
+    {% else -%}
+    {% set c = '' -%}
+    {% endif -%}
+    <a href="{{ url_for(endpoint, **kwargs) }}" class="{{ c }}">{{ text }}</a>
+{% endmacro %}

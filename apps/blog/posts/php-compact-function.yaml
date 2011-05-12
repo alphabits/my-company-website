@@ -1,0 +1,44 @@
+title: "PHP compact funktionen"
+author: "Anders Hørsted"
+date: 2011-02-02
+body: |
+    Jeg kan stadig finde nye små godbidder blandt phps funktioner. Nogen gange kommer jeg ud for en situation hvor en funktion har en række parametrer som den så skal samle i et array og sende videre:
+
+        :::PHP
+        <?php
+            function menu($items, $id, $show_submenus) {
+                return render_partial('menu', array(
+                    'items' => $items,
+                    'id' => $id,
+                    'show_submenus' => $show_submenus
+                ));
+            }
+        ?>
+
+    Repetitionen er rimelig tydelig, men jeg vil gerne have funktionen “menu” så jeg i min template kan skrive
+
+        :::HTML
+        <div class="some_wrapper">
+            <?=menu($items, 'mainmenu', true)?>
+        </div>
+
+    istedet for
+
+        :::HTML+PHP
+        <div class="some_wrapper">
+            <?=render_partial('menu', array('items'=>$items, 'id'=>'mainmenu', 
+                    'show_submenus'=>true)?>
+        </div>
+
+    Løsningen er en php-funktion jeg har overset indtil i dag. Compact tager et vilkårligt antal strenge. For hver streng undersøger den om der er en variabel med samme navn defineret i samme scope, som compact bliver kaldt. Hvis der er, bliver variablens værdi tilføjet til det array compact i sidste ende returnerer. Arrayet compact returnerer har variablens navn som key og variablens værdi som value. Lige hvad der skal bruges til at gøre min menu-funktion pænere.
+
+        :::PHP
+        <?php
+        function menu($items, $id, $show_submenus) {
+            return render_partial('menu', compact('items','id','show_submenus'));
+        }
+        ?>
+
+tags:
+    - Communication
+    - IT
