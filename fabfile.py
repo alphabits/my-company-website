@@ -9,7 +9,7 @@ env.hosts = ['anders@173.45.237.53:30010']
 def deploy(msg):
     code_dir = '/home/anders/alphabits.dk/application'
     local('git add .')
-    local('git commit -m "%s"', (msg,))
+    local('git commit -m "%s"' % (msg,))
     local('git push origin master')
     with cd(code_dir):
         run('git pull origin')
