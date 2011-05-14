@@ -9,7 +9,7 @@ from pygments.formatters import HtmlFormatter
 from app import app
 
 
-md = markdown.Markdown(extensions=['my_codehilite'])
+md = markdown.Markdown(extensions=['codehilite'])
 
 
 @evalcontextfilter
