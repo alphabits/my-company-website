@@ -13,11 +13,11 @@ def index():
 
 
 
-_page_route_string = '''
-    /<any("about","websites","webapplications","data-analysis",
-            "solutions","craftmanship","buzzwords","open-source-tools",
-            "who-am-i"):page>
-'''.replace(' ', '').replace('\n', '')
+pages = [
+    'about', 'websites', 'web-application', 'data-analysis',
+    'solutions', 'open-source-tools', 'who-am-i'
+]
+_page_route_string = '/<any(%s):page>' % (','.join(['"%s"'%(p,) for p in pages]))
 
 @frontend.route(_page_route_string)
 def show_page(page):

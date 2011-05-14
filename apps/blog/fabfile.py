@@ -18,14 +18,5 @@ def test():
         output = yaml.dump(index_data, open('posts/_index_file.yaml', 'w'), indent=4,
                 default_flow_style=False)
 
-def deploy():
-    code_dir = '/home/anders/alphabits.dk/application'
-    local('git add .')
-    local('git commit -m "Deployment commit"')
-    local('git push origin master')
-    with cd(code_dir):
-        local('git pull origin master')
-        local('touch app.wsgi')
-
-def ext_test():
-    run('ls')
+def ext_test(test):
+    print test
