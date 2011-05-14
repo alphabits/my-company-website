@@ -12,5 +12,5 @@ def deploy():
     local('git commit -m "Deployment commit"')
     local('git push origin master')
     with cd(code_dir):
-        local('git pull origin')
-        local('touch app.wsgi')
+        run('git pull origin')
+        run('touch app.wsgi')
