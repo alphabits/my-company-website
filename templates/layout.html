@@ -29,21 +29,23 @@
             <div class="wrapper">
                 <h1><a href="{{url_for('frontend.index')}}">Alphabits</a></h1>
                 <nav>
-                    {{ h.get_link('frontend.show_page', 'Alphabits', page="about")}} is my company, where I create websites, webapplications and do data analysis.<br/>
-                    I prefer to create simple solutions using open source tools. I dislike bland buzzwords and<br/> 
-                    admire great craftmanship. You can read more about my personal thoughts at {{ h.get_link('blog.index', 'my blog')}}.
+                {%- block topbar -%}
+                {{ h.menu('<br/>') }}
+                {%- endblock -%}
                 </nav>
             </div>
         </header>
         <div class="wrapper">
-            <aside>
-                {% block aside %}{% endblock %}
-            </aside>
             <div class="content">
-                {% block content %}{% endblock %}
+                <aside>
+                    {% block aside %}{% endblock %}
+                </aside>
+                <div class="main-content">
+                    {% block content %}{% endblock %}
+                </div>
             </div>
             <footer>
-                
+            &copy; Alphabits 2011 • {{ h.get_link('frontend.contact', 'Contact') }} • {{config.DB}}
             </footer>
         </div>
     </body>

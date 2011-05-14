@@ -1,0 +1,4 @@
+{% import "helpers.html" as h with context -%}
+{{ h.get_link('frontend.show_page', 'Alphabits', page="about")}} is my company, where {{ h.get_link('frontend.show_page', 'I', page='who-am-i') }} create {{ h.get_link('frontend.show_page', 'websites', page='websites') }}, {{ h.get_link('frontend.show_page', 'webapplications', page='webapplications') }} and do {{ h.get_link('frontend.show_page', 'data analysis', page='data-analysis') }}.<br/>
+I prefer to create {{ h.get_link('frontend.show_page', 'simple solutions', page='solutions') }} using {{ h.get_link('frontend.show_page', 'open source tools', page='open-source-tools') }}. I dislike {{ h.get_link('frontend.show_page', 'bland buzzwords', page='buzzwords') }} and<br/> 
+admire {{ h.get_link('frontend.show_page', 'great craftmanship', page='craftmanship')}}. You can read more about my personal thoughts at {{ h.get_link('blog.index', 'my blog')}}.

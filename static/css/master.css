@@ -34,6 +34,17 @@ h1 a {
     margin-left: 31px;
 }
 
+label {
+    float: left;
+    width: 80px;
+    text-align: right;
+    padding-right: 12px;
+}
+
+.form-field {
+    margin-bottom: 8px;
+}
+
 nav {
     float: left;
     width: 628px;
@@ -42,6 +53,19 @@ nav {
 
 nav .active {
     color: #555;
+    text-decoration: underline;
+}
+
+header nav {
+    color: #999;
+}
+
+header a {
+    text-decoration: none;
+}
+
+.content {
+    overflow: hidden;
 }
 
 aside {
@@ -51,13 +75,17 @@ aside {
     min-height: 100px;
 }
 
-.content {
+.main-content {
     width: 628px;
     float: left;
 }
 
+.main-content p {
+    margin-bottom: 8px;
+}
+
 h2 {
-    font: normal normal 2.8em/1.4 'Bigshot One', georgia, times, serif;
+    font: normal normal 2.8em/1.1 'Bigshot One', georgia, times, serif;
     margin-bottom: 28px;
     padding-bottom: 8px;
     border-bottom: 1px dotted #aaa;
@@ -90,4 +118,56 @@ article {
     padding-left: 3px;
     margin: 14px 0;
     font-size: 14px;
+}
+
+footer {
+    margin: 30px 140px 10px 140px;
+    padding-top: 4px;
+    border-top: 1px dotted #ccc;
+    clear: both;
+    font-size: 12px;
+}
+
+.welcome-message {
+    /*font-size: 24px;*/
+    font-size: 24px;
+}
+
+.welcome-message p {
+    font-style: italic;
+}
+
+input {
+    width: 160px;
+}
+
+input, textarea {
+    border: 1px solid #ddd;
+    background-color: #f6f6f6;
+    font-family: "lucida grande", verdana, arial, helvetica, sans-serif;
+    font-size: 12px;
+    padding: 4px;
+}
+
+input[type=submit] {
+    width: auto;
+}
+
+textarea {
+    width: 300px;
+    height: 110px;
+}
+
+.error input, .error textarea {
+    border-color: red;
+}
+
+span.error {
+    font-size: 12px;
+    color: red;
+    font-style: italic;
+}
+
+.contact-form {
+    margin-top: 20px;
 }
