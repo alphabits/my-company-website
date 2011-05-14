@@ -23,7 +23,7 @@ def deploy():
     local('git add .')
     local('git commit -m "Deployment commit"')
     with cd(code_dir):
-        local('git pull')
+        local('git pull origin master')
         local('touch app.wsgi')
 
 def ext_test():
