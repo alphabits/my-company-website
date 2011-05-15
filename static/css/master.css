@@ -43,6 +43,7 @@ label {
 
 .form-field {
     margin-bottom: 8px;
+    overflow: hidden;
 }
 
 nav {
@@ -147,6 +148,7 @@ input, textarea {
     font-family: "lucida grande", verdana, arial, helvetica, sans-serif;
     font-size: 12px;
     padding: 4px;
+    float: left;
 }
 
 input[type=submit] {
@@ -166,6 +168,9 @@ span.error {
     font-size: 12px;
     color: red;
     font-style: italic;
+    display: block;
+    float: left;
+    padding: 4px 6px 0 6px;
 }
 
 .contact-form {

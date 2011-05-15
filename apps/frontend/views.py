@@ -28,6 +28,7 @@ def show_page(page):
 def contact():
     contact_form = ContactForm(request.form)
     if request.method=="POST" and contact_form.validate():
-        return redirect(url_for('frontend.index'))
+        return render_template('frontend/contact_success.html', 
+                name=request.form['name'])
     return render_template('frontend/contact.html', form=contact_form)
 
