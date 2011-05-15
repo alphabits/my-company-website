@@ -6,8 +6,6 @@ from fabric.api import *
 import yaml
 
 
-env.hosts = ['anders@173.45.237.53:30010']
-
 def test():
     index_data = {}
     for filename in os.listdir('posts'):
