@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<h2>Blog</h2>
+{% for p in posts %}
+<article>
+<h3>{{ p.title|safe }}</h3>
+<h4>{{ p.date.strftime('%d %B %Y') }} - By {{p.author}} - {{p.filename}}</h4>
+<div class="body">
+    {{p.body|markdown}}
+</div>
+</article>
+{% endfor %}
+
+<div class="pagination">
+    {% if page*page_size < total_posts %}
+    <a href="?page={{page+1}}">Older posts</a>
+    {% endif %}
+    {% if page > 1 %}
+    <a href="?page={{page-1}}">Newer posts</a>
+    {% endif %}
+</div>
+
+{% endblock %}

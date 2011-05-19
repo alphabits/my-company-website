@@ -1,0 +1,9 @@
+{% extends "layout.html" %}
+{% import "helpers.html" as h %}
+{%- block topbar %}{% endblock -%}
+{% block content %}
+<div class="welcome-message">
+    <h2>Welcome</h2>
+    <p>{{h.menu('')}}</p>
+</div>
+{% endblock %}

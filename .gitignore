@@ -1,3 +1,4 @@
 *.pyc
 *.swp
 fabfile.py
+local_config.py
