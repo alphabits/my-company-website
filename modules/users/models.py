@@ -16,4 +16,14 @@ class User(Base):
         self.password = password
 
     def __repr__(self):
-        return '<User %r>' % (self.name)
+        return '<User %r>' % (self.username)
+
+
+def authorize(username, password):
+    res = User.query.filter(User.username == username).all()
+    if len(res) == 1 and res[0].password == password:
+        return res[0]
+    return False
+
+def generate_password(password):
+    return "lol" + password

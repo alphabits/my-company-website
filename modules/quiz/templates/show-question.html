@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% import "helpers.html" as h %}
+{%- block topbar %}{% endblock -%}
+{% block content %}
+<div class="question">
+    <h2>{{ q.title }}</h2>
+    <div class="text">
+        {% include q.template %}
+    </div>
+</div>
+{% endblock %}
