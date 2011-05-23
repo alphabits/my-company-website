@@ -1,3 +1,6 @@
+{# 
+vim:filetype=htmljinja 
+#}
 {% macro get_link(endpoint, text) -%}
     {% set u = url_for(endpoint, **kwargs) %}
     {% if request.path == u -%}

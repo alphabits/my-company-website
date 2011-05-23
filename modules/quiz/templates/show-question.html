@@ -1,11 +1,50 @@
 {% extends "layout.html" %}
-{% import "helpers.html" as h %}
+{% import "helpers.html" as h with context %}
 {%- block topbar %}{% endblock -%}
 {% block content %}
 <div class="question">
     <h2>{{ q.title }}</h2>
     <div class="text">
         {% include q.template %}
+    </div>
+    {% if q.is_closed() %}
+        <form action="" method="post">
+            <input type="submit" name="open_question" value="Open question" />
+        </form>
+    {% else %}
+    <div class="answers">
+        {% for a in answers %}
+            <div class="answer">
+                <h4>{{a.title}}</h4>
+                <div class="codehilite">
+                {% code 'php' %}
+{{a.body|safe}}
+                {% endcode %}
+                </div>
+                <p>{{a.user.username}}</p>
+                <p>$$\sum_1^\infty$$</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="answer_form">
+        <form action="" method="post">
+            {{ h.render_field(form.title) }}
+            {{ h.render_field(form.body) }}
+            <label for="add_answer">&nbsp;</label>
+            <input type="submit" name="add_answer" value="Add answer" />
+        </form>
+    </div>
+    {% endif %}
+    {{ q.title|stupid }}
+    <div class="codehilite">
+    {% code 'python' %}
+import flask
+{%- endcode -%}
+{%- code 'php' -%}
+function test() {
+    echo "hurra";
+}
+{%- endcode %}
     </div>
 </div>
 {% endblock %}

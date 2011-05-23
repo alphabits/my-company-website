@@ -1,6 +1,7 @@
 from flask import Flask
 
 import config
+import pygments_extension
 
 
 # Order of the following instructions matters.
@@ -14,6 +15,9 @@ app = Flask(__name__)
 app.config.from_object(config)
 
 app.secret_key = config.SECRET_KEY
+
+app.jinja_env.extensions["pygments_extension.PygmentsExtension"] = pygments_extension.PygmentsExtension(app.jinja_env)
+#app.jinja_env.autoescape = False
 
 def load_modules(modules):
     for mod_name, url_root in modules:
@@ -29,6 +33,8 @@ def load_models(modules):
 
 
 load_modules(config.INSTALLED_MODULES)
+
+import errorhandlers
 
 '''
 from modules.blog.views import blog

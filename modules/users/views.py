@@ -4,42 +4,39 @@ from flask import Module, url_for, render_template, request, session, redirect, 
 import config
 from app import app
 
-from .models import User, authorize, generate_password
+from .models import User, authorize, generate_password, anonymous
 from .forms import LoginForm
 from .config import USERNAME_KEY, PASSWORD_KEY
+from .utils import user_authorized, get_current_user, logout_current_user, login_user
 
-unk = USERNAME_KEY
-pwk = PASSWORD_KEY
+
 
 users = Module(__name__, 'users')
 
 @app.before_request
 def add_user_to_global():
-    if unk in session and pwk in session:
-        user = authorize(session[unk], session[pwk])
-        if user:
-            g.user = user
+    if user_authorized():
+        g.user = get_current_user()
+    else:
+        g.user = anonymous
 
 
 @users.route('/login', methods=["POST", "GET"])
 def login():
-    if unk in session and pwk in session:
-        if authorize(session[unk], session[pwk]):
-            return redirect(url_for('quiz.index'))
+    if user_authorized():
+        return redirect(url_for('quiz.index'))
 
     login_form = LoginForm(request.form)
     if request.method == "POST" and login_form.validate():
         password = generate_password(login_form.password.data)
         username = login_form.username.data
         if authorize(username, password):
-            session[unk] = username
-            session[pwk] = password
+            login_user(username, password)
             return redirect(url_for('quiz.index'))
     return render_template('users/login.html', form=login_form)
 
 
 @users.route('/logout')
 def logout():
-    del session[unk]
-    del session[pwk]
+    logout_current_user()
     return redirect(url_for('users.login'))

@@ -15,7 +15,7 @@ def index():
 
 pages = [
     'about', 'websites', 'web-application', 'data-analysis',
-    'solutions', 'open-source-tools', 'who-am-i'
+    'solutions', 'open-source-tools', 'who-am-i', 'normal-distribution'
 ]
 _page_route_string = '/<any(%s):page>' % (','.join(['"%s"'%(p,) for p in pages]))
 
@@ -31,4 +31,6 @@ def contact():
         return render_template('frontend/contact_success.html', 
                 name=request.form['name'])
     return render_template('frontend/contact.html', form=contact_form)
+
+    
 

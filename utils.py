@@ -27,5 +27,9 @@ def source(eval_context, content):
 def markdown(content):
     return Markup(md.convert(content))
 
+@app.template_filter()
+def stupid(content):
+    return Markup('<b>Stupid</b>')
+
 def get_path(rel_path):
     return os.path.abspath(os.path.dirname(rel_path))

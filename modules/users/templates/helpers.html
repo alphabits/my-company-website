@@ -1,0 +1,8 @@
+{# 
+vim:filetype=htmljinja 
+#}
+{%- macro logout_link() -%}
+{% if g.user.role in ['member', 'admin'] %}
+    <a href="{{url_for('users.logout')}}">Logout</a>
+{% endif %}
+{% endmacro %}

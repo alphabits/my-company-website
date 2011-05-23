@@ -1,0 +1,9 @@
+{#
+ vim:filetype=htmljinja
+#}
+{% extends "layout.html" %}
+{%- block topbar %}{% endblock -%}
+{% block content %}
+<h2>Oops!</h2>
+<p>Did you type anything wrong? Or did I make a sloppy mistake while coding this site? Head back to the <a href="{{url_for('quiz.index')}}">frontpage</a> to get going again. Or <a href="{{url_for('frontend.contact')}}">contact me</a> if you think should know about this error.</p>
+{% endblock %}

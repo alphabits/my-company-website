@@ -1,9 +1,9 @@
-{% extends "layout.html" %}
+{%- extends "layout.html" -%}
+{% from "users/helpers.html" import logout_link with context %}
 {% block topbar %}{% endblock -%}
 {% block content %}
 <h2>Programmers quiz</h2>
 {% for q in questions %}
 <p><a href="{{url_for('quiz.show_question', id=q.id)}}">{{ q.title }}</a></p>
 {% endfor %}
-
 {% endblock %}
