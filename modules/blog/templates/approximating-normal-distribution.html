@@ -1,0 +1,36 @@
+As a little exercise I have created a <a href="{{ url_for('frontend.show_page', page='approximating-normal-distribution')}}">javascript application</a> that calculates probabilities for an arbitrary normal distribution. Since no analytical expression for the cumulative prbability distribution exists, I had to find a way to approximate it. <br/>
+If a stochastic variable \(X\) is normal distributed with mean \(\mu\) and standard deviation \(\sigma\), the stochastic variable 
+$$
+    Z=\frac{X-\mu}{\sigma}
+$$ 
+is standard normal distributed. We therefore only need to find a way to calculate probabilities of the standard normal distribution, to be able to calculate an arbitrary normal distribution. The standard normal distribution has the cumulative density function (cdf)
+$$
+    F(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^x e^{-t^2/2}\,\text{dt}
+$$
+Unfortunately this integral can't be solved analytically, so we can only approximate it. We will approximate it with a series representation of the ingral, but to make the following calculations easier, we first look at some properties of the cdf of the standard normal distribution. First of all, since the probability density function (pdf) of the standard normal distribution is symmetric around \(x=0\), the following holds
+$$
+    F(-x) = 1 - F(x)
+$$
+Therefore we only need to calculate \(F(x)\) for positive values of \(x\). Another result of the symmetric pdf, is that \(F(0)=0.5\) and therefore
+$$
+    F(x) = 0.5 + \frac{1}{\sqrt{2\pi}} \int_{0}^x e^{-t^2/2}\,\text{dt}
+$$
+Now we need to approximate the above integral. First we can replace the exponential function with its series representation
+$$
+    F(x) = 0.5 + \frac{1}{\sqrt{2\pi}} \int_{0}^x \left(\sum_{n=0}^\infty \frac{(-t^2/2)^n}{n!}\right) \,\text{dt}
+$$
+Since the series converges for all values of \(t\), we are allowed to switch the summation and the integration which gives
+\begin{align}
+    F(x) &= 0.5 + \frac{1}{\sqrt{2\pi}} \sum_{n=0}^\infty\frac{(-1)^n}{2^n n!} \left(\int_{0}^x t^{2n} \,\text{dt}\right) \\
+    &= 0.5 + \frac{1}{\sqrt{2\pi}} \sum_{n=0}^\infty\frac{(-1)^n}{2^n n!} \left[\frac{t^{2n+1}}{2n+1}\right]_{t=0}^x \\
+    &= 0.5 + \frac{1}{\sqrt{2\pi}} \sum_{n=0}^\infty\frac{(-1)^n x^{2n+1}}{2^n n! (2n+1)} 
+\end{align}
+With this series the cdf of the standard normal distribution can be approximated by selecting \(N\) and then calculate
+$$
+    F_N(x) = 0.5 + \frac{1}{\sqrt{2\pi}} \sum_{n=0}^N\frac{(-1)^n x^{2n+1}}{2^n n! (2n+1)} 
+$$
+The error that is made by only calculating the first \(N\) terms is bounded by
+$$
+|F(x) - F_N(x)| \leq \frac{x^{2N+3}}{2^{N+1} (N+1)! (2N+3)}
+$$
+By selecting \(N\) large enough we can therefore get an arbitrarily small error.

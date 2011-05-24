@@ -4,9 +4,9 @@
 {% for p in posts %}
 <article>
 <h3>{{ p.title|safe }}</h3>
-<h4>{{ p.date.strftime('%d %B %Y') }} - By {{p.author}} - {{p.filename}}</h4>
+<h4>{{ p.date.strftime('%d %B %Y') }} - By {{p.author}}</h4>
 <div class="body">
-    {{p.body|markdown}}
+    {% include p.template %}
 </div>
 </article>
 {% endfor %}

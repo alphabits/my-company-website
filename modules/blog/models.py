@@ -14,11 +14,7 @@ def get_all_posts():
     for f in os.listdir(path):
         if f.startswith('.') or f.startswith('_'):
             continue
-        fobj = open(path+'/'+f, 'r')
-        tmp_post = yaml.load(fobj)
-        tmp_post['filename'] = f
-        fobj.close()
-        posts.append(tmp_post)
+        posts.append(get_post_from_yaml(f))
     posts.sort(key=lambda p: p['date'], reverse=True)
     return posts
 
@@ -30,11 +26,14 @@ def get_posts(start, end):
     keys.sort(reverse=True)
     keys = keys[start:end]
     for k in keys:
-        with open(path+'/'+idx[k], 'r') as f:
-            tmp_post = yaml.load(f)
-        tmp_post['filename'] = idx[k]
-        posts.append(tmp_post)
+        posts.append(get_post_from_yaml(idx[k]))
     return posts
+
+def get_post_from_yaml(filename):
+    with open(path+'/'+filename, 'r') as f:
+        post = yaml.load(f)
+    post['filename'] = filename
+    return post
 
 def num_posts():
     return len([f for f in os.listdir(path) if not f[0] in ['.', '_']])

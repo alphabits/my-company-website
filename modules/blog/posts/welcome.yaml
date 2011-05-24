@@ -1,6 +1,4 @@
 title: "Welcome to my new blog"
 author: "Anders Hørsted"
 date: 2011-05-15T10:30:23
-body: |
-    Welcome to my new blog. I used to blog at [tanketorsken.dk](http://www.tanketorsken.dk) but have chosen to move all my web activity to my company web site. This site. I hope you enjoy.
-
+template: "blog/welcome.html"
