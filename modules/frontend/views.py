@@ -15,7 +15,7 @@ def index():
 
 pages = [
     'about', 'websites', 'web-application', 'data-analysis',
-    'solutions', 'open-source-tools', 'who-am-i', 'approximating-normal-distribution'
+    'solutions', 'open-source-tools', 'who-am-i', 'normal-distribution-calculator'
 ]
 _page_route_string = '/<any(%s):page>' % (','.join(['"%s"'%(p,) for p in pages]))
 
