@@ -1,0 +1,80 @@
+<p>
+Let \(A\) be a \(n \times n\) matrix and \(v\) a n-dimensional column vector. The eigenvectors and eigenvalues of \(A\) are defined by the equation
+$$
+    Av = \lambda v\:,\quad v \neq 0
+$$
+Any \(v\) and \(\lambda\in\mathbb{R}\) satisfying the equation are called respectively the eigenvector and the eigenvalue of \(A\). If the above equation is rearange a bit we get
+$$
+    (A - \lambda I)v = 0
+$$
+Since we are not interested in the solution \(v=0\), the matrix \(A-\lambda I\) has to be singular, which implies that 
+$$
+    \det(A-\lambda I) = 0
+$$
+The expression \(\det(A-\lambda I)\) regarded as a function of \(\lambda\) is a polynomium of maximum \(n\)-degree and the roots of the polynomium are the eigenvalues of \(A\). For every eigenvalue of \(A\) the solutions to the homogeneous matrixequation
+$$
+    (A - \lambda I)v = 0
+$$
+are called the eigenvectors of \(A\). An example will clarify the above.
+</p>
+<p>
+Let the matrix  \(A\) be given by
+$$
+A = \begin{bmatrix}
+    1 & 2 \\
+    3 & 0
+\end{bmatrix}
+$$
+Then we have
+$$
+A - \lambda I = \begin{bmatrix}
+    1 - \lambda & 2 \\
+    3 & -\lambda
+\end{bmatrix}
+$$
+and therefore 
+\begin{align}
+    \det(A - \lambda I) &= (1-\lambda)(-\lambda) - 6 \\
+        &= \lambda^2 - \lambda - 6
+\end{align}
+Now we can find the roots of the polynomium
+\begin{gather}
+    \lambda^2 - \lambda - 6 = 0  \quad\Rightarrow\quad \lambda_1 = 3 \:\land\: \lambda_2 = -2 
+\end{gather}
+The eigenvalues of \(A\) are found to be \(3\) and \(-2\). To find the eigenvectors belonging to the first eigenvalue \(\lambda_1=3\) we write
+\begin{align}
+A-3I &= \begin{bmatrix}
+    1-3 & 2 \\
+    3 & -3
+    \end{bmatrix} \\
+    &= \begin{bmatrix}
+    -2 & 2 \\
+    3 & -3
+    \end{bmatrix} \\
+    &\sim \begin{bmatrix}
+        1 & -1 \\
+        0 & 0
+    \end{bmatrix}
+\end{align}
+Since
+\begin{align}
+    A-3I \sim \begin{bmatrix}
+        1 & -1 \\
+        0 & 0
+    \end{bmatrix}
+    \end{align}
+we get the solution to the homogeneous equation \((A-3I)v=0\) as
+$$
+    v = s\begin{bmatrix}
+        -1 \\ 1
+    \end{bmatrix},\quad s\in\mathbb{R}
+$$
+All eigenvectors of \(A\) belonging to the eigenvalue \(\lambda_1=3\) are therefore given by
+$$
+    E_{\lambda_1} = \text{span}\{\begin{bmatrix}-1 & 1\end{bmatrix}^T\}
+$$
+By the same procedure we get that all eigenvectors of \(A\) belonging to the eigenvalue \(\lambda_2=-2\) are
+$$
+    E_{\lambda_2} = \text{span}\{\begin{bmatrix}2 & -3\end{bmatrix}^T\}
+$$
+

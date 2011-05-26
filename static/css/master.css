@@ -19,6 +19,10 @@ header {
     overflow: hidden;
 }
 
+em {
+    font-style: italic;
+}
+
 
 h1 {
     width: 120px;
