@@ -20,15 +20,19 @@ class Question(Base, DBModel):
     id = Column(String, primary_key=True)
     title = Column(String)
     template = Column(String)
-    status = Column(String, default='closed')
-    opened_at = Column(Unicode(50), default=datetime.now)
-    
-    def is_closed(self):
-        return self.status == 'closed'
+    languages_allowed = Column(String)
 
-    def open(self):
-        self.opened_at = datetime.now()
-        self.status = 'open'
+    def open_for_user(self, user):
+        if len(Answer.from_user_and_question(user, self)) == 0:
+            a = Answer(type='opener', user=user, question=self)
+            a.save()
+            self.answers.append(a)
+    
+    def opened_by_user(self, user):
+        return len(Answer.from_user_and_question(user, self)) > 0
+
+    def get_languages_allowed(self):
+        return self.languages_allowed.split(',')
 
 
 class Answer(Base, DBModel):
@@ -37,10 +41,11 @@ class Answer(Base, DBModel):
     id = Column(Integer, primary_key=True)
     question_id = Column(String, ForeignKey('questions.id'))
     opened_at = Column(Unicode(50), default=datetime.now)
-    closed_at = Column(Unicode(50))
+    updated_at = Column(Unicode(50))
     title = Column(String)
     body = Column(String)
-    status = Column(String, default='open')
+    type = Column(String) # opener, text
+    language = Column(String)
     user_id = Column(Integer, ForeignKey('users.id'))
 
     user = relationship(User, backref=backref('answers', order_by=opened_at))
@@ -50,14 +55,4 @@ class Answer(Base, DBModel):
     def from_user_and_question(cls, user, question):
         return cls.query.filter(cls.user == user).filter(
                 cls.question == question).all()
-
-
-class Comment(Base):
-    __tablename__ = 'answer_comments'
-
-    id = Column(Integer, primary_key=True)
-    answer_id = Column(Integer, ForeignKey('answers.id'))
-    body = Column(String)
-    created_at = Column(Unicode(50), default=datetime.now)
-
 

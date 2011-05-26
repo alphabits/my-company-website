@@ -45,6 +45,9 @@
             </div>
         </header>
         <div class="wrapper">
+            {%- if g.user.role != 'anonymous' -%}
+            <div class="user-status">{{ g.user.username }} • <a href="{{ url_for('quiz.index') }}">quiz index</a> • <a href="{{ url_for('users.logout') }}">logout</a></div>
+            {%- endif -%}
             <div class="content">
                 <aside>
                     {% block aside %}{% endblock %}

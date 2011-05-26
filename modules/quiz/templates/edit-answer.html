@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% import "helpers.html" as h with context %}
+{% block content %}
+<h2>Edit answer</h2>
+<p>You are editing an answer for the question <a href="{{ url_for('quiz.show_question', id=q.id) }}">{{ q.title }}</a></p>
+    <div class="answer_form">
+        <form action="" method="post">
+            {{ h.render_field(form.title) }}
+            {{ h.render_field(form.body) }}
+            {{ h.render_field(form.language )}}
+            <label for="add_answer">&nbsp;</label>
+            <input type="submit" name="save_answer" value="Save answer" />
+        </form>
+    </div>
+{% endblock %}

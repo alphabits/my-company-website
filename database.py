@@ -2,12 +2,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import scoped_session, sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 
-Base = declarative_base()
-
-
 import config
 
+
+Base = declarative_base()
+
 engine = create_engine(config.DB_CONNECTION, convert_unicode=True)
+if config.DEBUG:
+    engine.echo = True
 
 db_session = scoped_session(sessionmaker(autocommit=False, autoflush=False, 
         bind=engine))

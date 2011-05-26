@@ -16,7 +16,8 @@ header {
 .wrapper {
     width: 908px;
     margin: 0 auto;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
 }
 
 em {
@@ -179,4 +180,11 @@ span.error {
 
 .contact-form {
     margin-top: 20px;
+}
+
+.user-status {
+    position: absolute;
+    top: -30px; right: 140px;
+    font-size: 12px;
+    font-style: italic;
 }
